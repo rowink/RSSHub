@@ -1614,51 +1614,11 @@
         "parameters": {
           "id": "部落 ID"
         },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
         "name": "部落影集",
         "maintainers": [
           "TonyRL"
         ],
         "location": "tribe-set.ts"
-      },
-      "/user/works/:id": {
-        "path": "/user/works/:id",
-        "categories": [
-          "picture"
-        ],
-        "example": "/500px/user/works/hujunli",
-        "parameters": {
-          "id": "摄影师 ID"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "500px.com.cn/:id",
-              "500px.com.cn/community/user-details/:id",
-              "500px.com.cn/community/user-details/:id/*"
-            ]
-          }
-        ],
-        "name": "摄影师作品",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "user.ts"
       }
     },
     "name": "500px 摄影社区",
@@ -8416,8 +8376,28 @@
     "routes": {
       "/sme/:path{.+}?": {
         "path": "/sme/:path{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "集成电路科学与工程学院",
+        "url": "www.sme.buaa.edu.cn",
+        "maintainers": [
+          "MeanZhang"
+        ],
+        "example": "/buaa/sme/tzgg",
+        "parameters": {
+          "path": "版块路径，默认为 `tzgg`（通知公告）"
+        },
+        "description": ":::tip\n\n版块路径（`path`）应填写板块 URL 中 `http://www.sme.buaa.edu.cn/` 和 `.htm` 之间的字段。\n\n示例：\n\n1. [通知公告](http://www.sme.buaa.edu.cn/tzgg.htm) 页面的 URL 为 `http://www.sme.buaa.edu.cn/tzgg.htm`，对应的路径参数为 `tzgg`，完整路由为 `/buaa/sme/tzgg`；\n2. [就业信息](http://www.sme.buaa.edu.cn/zsjy/jyxx.htm) 页面的 URL 为 `http://www.sme.buaa.edu.cn/zsjy/jyxx.htm`，对应的路径参数为 `zsjy/jyxx`，完整路由为 `/buaa/sme/zsjy/jyxx`。\n\n:::\n\n:::warning\n\n部分页面（如[学院介绍](http://www.sme.buaa.edu.cn/xygk/xyjs.htm)、[微纳中心](http://www.sme.buaa.edu.cn/wnzx.htm)、[院学生会](http://www.sme.buaa.edu.cn/xsgz/yxsh.htm)）存在无内容、内容跳转至外站等情况，因此可能出现解析失败的现象。\n\n:::",
+        "categories": [
+          "university"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
         "location": "sme.ts"
       },
       "/news/:type": {
@@ -25814,6 +25794,38 @@
     "url": "jwc.hit.edu.cn",
     "description": ":::warning\n哈工大网站疑似禁止了`rsshub.app`的访问，使用路由需要自行 [部署](https://docs.rsshub.app/deploy/)。\n:::"
   },
+  "hitcon": {
+    "routes": {
+      "/zeroday/vulnerability/:status?": {
+        "name": "漏洞",
+        "categories": [
+          "programming"
+        ],
+        "path": "/zeroday/vulnerability/:status?",
+        "example": "/hitcon/zeroday/vulnerability",
+        "parameters": {
+          "status": "漏洞状态，见下表"
+        },
+        "maintainers": [
+          "KarasuShin"
+        ],
+        "radar": [
+          {
+            "source": [
+              "zeroday.hitcon.org/vulnerability/:status?"
+            ]
+          }
+        ],
+        "features": {
+          "requirePuppeteer": true
+        },
+        "description": "| 缺省   | all  | closed | disclosed | patching |\n  | ------ | ---- | ------ | --------- | -------- |\n  | 活動中 | 全部 | 關閉   | 公開      | 修補中   |",
+        "location": "zeroday.ts"
+      }
+    },
+    "name": "HITCON",
+    "url": "hitcon.org"
+  },
   "hitsz": {
     "routes": {
       "/article/:category?": {
@@ -37542,14 +37554,6 @@
           "category": "Category, see table below",
           "article_type": "Only includes free articles, set `free` to enable, disabled by default"
         },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
         "radar": [
           {
             "source": [
@@ -37561,7 +37565,8 @@
         ],
         "name": "News",
         "maintainers": [
-          "Arracc"
+          "Arracc",
+          "ladeng07"
         ],
         "description": "| 総合 | オピニオン | 経済    | 政治     | 金融      | マーケット | ビジネス | マネーのまなび | テック     | 国際          | スポーツ | 社会・調査 | 地域  | 文化    | ライフスタイル |\n  | ---- | ---------- | ------- | -------- | --------- | ---------- | -------- | -------------- | ---------- | ------------- | -------- | ---------- | ----- | ------- | -------------- |\n  | news | opinion    | economy | politics | financial | business   | 不支持   | 不支持         | technology | international | sports   | society    | local | culture | lifestyle      |",
         "location": "news.ts"
@@ -42157,14 +42162,30 @@
     "routes": {
       "/user/:id": {
         "path": "/user/:id",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/picnob/user/xlisa_olivex",
+        "parameters": {
+          "id": "Instagram id"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": true,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
         "radar": [
           {
             "source": [
               "picnob.com/profile/:id/*"
-            ]
+            ],
+            "target": "/user/:id"
           }
         ],
-        "name": "Unknown",
+        "name": "User Profile - Picnob",
         "maintainers": [
           "TonyRL",
           "micheal-death"
@@ -47452,12 +47473,7 @@
           "category": "Category, see below, `news` by default"
         },
         "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
+          "antiCrawler": true
         },
         "radar": [
           {
@@ -60122,7 +60138,7 @@
         "parameters": {
           "category": "类别id，默认为：latest"
         },
-        "description": "\n| 分类         | id             |\n| ------------ | -------------- |\n| 最新         | latest         |\n| 赚客吧       | zuankeba       |\n| 赚客吧热帖   | zuankeba-hot   |\n| 新赚吧       | xinzuanba      |\n| 新赚吧热帖   | xinzuanba-hot  |\n| 微博         | weibo          |\n| 微博热帖     | weibo-hot      |\n| 豆瓣线报     | douban         |\n| 豆瓣热帖     | douban-hot     |\n| 酷安         | kuan           |\n| 小嘀咕       | xiaodigu       |\n| 葫芦侠       | huluxia        |\n| 小刀娱乐网   | xiadao         |\n| 技术 QQ 网   | qqjishu        |\n| YYOK 大全    | yyok           |\n| 活动资讯网   | huodong        |\n| 免费赚钱中心 | maifei         |\n| 一小时       | yixiaoshi      |\n| 三小时       | sanxiaoshi     |\n| 六小时       | liuxiaoshi     |\n| 十二小时     | shierxiaoshi   |\n| 二十四小时   | ershisixiaoshi |\n| 四十八小时   | sishibaxiaoshi |\n| 今天         | jintian        |\n| 昨天         | zuotian        |\n| 前天         | qiantian       |\n| 三天         | santian        |\n| 五天         | wutian         |\n| 七天         | qitian         |\n| 十五天       | shiwutian      |",
+        "description": "\n| 分类         | id             |\n| ------------ | -------------- |\n| 最新         | latest         |\n| 赚客吧       | zuankeba       |\n| 赚客吧热帖   | zuankeba-hot   |\n| 新赚吧       | xinzuanba      |\n| 新赚吧热帖   | xinzuanba-hot  |\n| 微博         | weibo          |\n| 微博热帖     | weibo-hot      |\n| 豆瓣线报     | douban         |\n| 豆瓣热帖     | douban-hot     |\n| 酷安         | kuan           |\n| 小嘀咕       | xiaodigu       |\n| 葫芦侠       | huluxia        |\n| 小刀娱乐网   | xiadao         |\n| 技术QQ网     | qqjishu        |\n| YYOK大全     | yyok           |\n| 活动资讯网   | huodong        |\n| 免费赚钱中心 | mianfei        |\n| 一小时       | yixiaoshi      |\n| 三小时       | sanxiaoshi     |\n| 六小时       | liuxiaoshi     |\n| 十二小时     | shierxiaoshi   |\n| 二十四小时   | ershisixiaoshi |\n| 四十八小时   | sishibaxiaoshi |\n| 今天         | jintian        |\n| 昨天         | zuotian        |\n| 前天         | qiantian       |\n| 三天         | santian        |\n| 五天         | wutian         |\n| 七天         | qitian         |\n| 十五天       | shiwutian      |",
         "categories": [
           "shopping"
         ],

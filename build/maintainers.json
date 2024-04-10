@@ -174,9 +174,6 @@
   "/500px/tribe/set/:id": [
     "TonyRL"
   ],
-  "/500px/user/works/:id": [
-    "TonyRL"
-  ],
   "/50forum/": [
     "sddiky"
   ],
@@ -849,7 +846,9 @@
   "/btzj/:category?": [
     "nczitzk"
   ],
-  "/buaa/sme/:path{.+}?": [],
+  "/buaa/sme/:path{.+}?": [
+    "MeanZhang"
+  ],
   "/buaa/news/:type": [
     "AlanDecode"
   ],
@@ -2629,6 +2628,9 @@
   "/hit/today/:category": [
     "ranpox"
   ],
+  "/hitcon/zeroday/vulnerability/:status?": [
+    "KarasuShin"
+  ],
   "/hitsz/article/:category?": [
     "xandery-geek"
   ],
@@ -3793,7 +3795,8 @@
   "/nikkei/": [],
   "/nikkei/index": [],
   "/nikkei/:category/:article_type?": [
-    "Arracc"
+    "Arracc",
+    "ladeng07"
   ],
   "/nikkei/asia": [
     "rainrdx"
